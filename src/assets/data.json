@@ -1,0 +1,70 @@
+{
+  "navigation": {
+    "links": [
+      { "id": 0, "name": "Home", "href": "/", "icon": "mdilHome" },
+      {
+        "id": 1,
+        "name": "Account",
+        "href": "/account",
+        "icon": "mdilAccount"
+      },
+      {
+        "id": 2,
+        "name": "Checkout",
+        "href": "/checkout",
+        "icon": "mdilCart"
+      }
+    ]
+  },
+  "store": {
+    "searchOptions": [
+      { "id": 0, "name": "All" },
+      { "id": 1, "name": "Most Popular" },
+      { "id": 2, "name": "Highest Rated" },
+      { "id": 3, "name": "New Additions" },
+      { "id": 4, "name": "Best Deals" }
+    ]
+  },
+  "categories": [
+    {
+      "id": 0,
+      "name": "Produce",
+      "subcategories": ["Organic"]
+    },
+    {
+      "id": 1,
+      "name": "Bulk",
+      "subcategories": ["Grains & Cereal", "Candy", "Nuts & Snacks", "Baking"]
+    },
+    {
+      "id": 2,
+      "name": "Household & Kitchen",
+      "subcategories": ["Knives", "Silverware", "Kitchen Appliances"]
+    }
+  ],
+  "user": {
+    "username": "SupaKlla3",
+    "email": "soupakeela@gmail.com",
+    "password": "password1",
+    "dob": { "day": 5, "month": 3, "year": 1997 },
+    "signedIn": false
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Bananas",
+      "organic": false,
+      "food": true,
+      "price": 0.49,
+      "unit": "lb"
+    },
+    {
+      "id": 2,
+      "name": "Bananas",
+      "organic": true,
+      "food": true,
+      "price": 0.79,
+      "unit": "lb"
+    }
+  ]
+}
