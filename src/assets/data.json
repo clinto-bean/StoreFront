@@ -37,7 +37,7 @@
     {
       "id": 0,
       "name": "Produce",
-      "subcategories": ["Organic"]
+      "subcategories": [{ "id": 0, "name": "Organic" }]
     },
     {
       "id": 1,
@@ -46,7 +46,7 @@
     {
       "id": 2,
       "name": "Household & Kitchen",
-      "subcategories": ["Medication"]
+      "subcategories": [{ "id": 0, "name": "Medication" }]
     }
   ],
   "user": {

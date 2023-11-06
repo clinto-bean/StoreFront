@@ -17,22 +17,22 @@ const Sidebar = ({ categories }: Props) => {
           <>
             <li
               key={category.id}
-              className="cursor-pointer rounded-r-md border border-sky-50 border-l-sky-200 px-2 font-bold text-sky-700 transition-all hover:border hover:border-sky-500 hover:bg-sky-500 hover:text-sky-100"
+              className="hover-bg-sky-500 hover-text-sky-100 cursor-pointer rounded-r-md border border-sky-50 border-l-sky-200 px-2 font-bold text-sky-700 transition-all hover:border hover:border-sky-500"
             >
               {category.name}
             </li>
             {category.subcategories?.map((subcategory) => (
               <li
-                key={subcategory}
-                className="mx-4 cursor-pointer rounded-r-md border border-sky-50 border-l-sky-200 px-2 text-sm text-sky-500 transition-all hover:border hover:border-sky-500 hover:bg-sky-500 hover:text-sky-100"
+                key={subcategory.id}
+                className="hover-border hover-border-sky-500 hover-bg-sky-500 hover-text-sky-100 mx-4 cursor-pointer rounded-r-md border border-sky-50 border-l-sky-200 px-2 text-sm text-sky-500 transition-all"
               >
-                {subcategory}
+                {subcategory.name}
               </li>
             ))}
           </>
         ))}
       </ul>
-      <button className="flex justify-center rounded-md border border-sky-50 bg-sky-700 p-4 font-semibold text-sky-50 transition-all hover:border-sky-700 hover:bg-sky-50 hover:text-sky-700 active:bg-sky-200">
+      <button className="hover-border-sky-700 hover-bg-sky-50 hover-text-sky-700 active-bg-sky-200 flex justify-center rounded-md border border-sky-50 bg-sky-700 p-4 font-semibold text-sky-50 transition-all">
         Clear Search Filters
       </button>
     </section>

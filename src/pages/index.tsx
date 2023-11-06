@@ -42,7 +42,11 @@ export default function Home() {
           name="description"
           content="Mock storefront product created by Clinton Clark"
         />
-        <Link rel="icon" href={"../../public/favicon.ico"} />
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href={"../../public/favicon.ico"}
+        />
       </Head>
       <section className="relative flex flex-col bg-zinc-100 text-zinc-950">
         <Navbar

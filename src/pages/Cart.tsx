@@ -19,7 +19,7 @@ const Cart = (props: Props) => {
       <div id="checkout" className="col-span-2 flex flex-col p-4">
         <p className="text-xl">Checkout</p>
         <div>
-          {cartItems.map((item) => {
+          {(cartItems as Product[]).map((item) => {
             const product = productList.find((p) => p.id === item.id);
 
             if (product && item.weight) {
@@ -63,7 +63,7 @@ const Cart = (props: Props) => {
           <div className="flex gap-2 px-4">
             <input
               type="checkbox"
-              checked={true}
+              defaultChecked={true}
               name="copyAddress"
               id="copyAddress"
             />
