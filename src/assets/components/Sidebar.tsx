@@ -1,11 +1,10 @@
 import React from "react";
 import type { Category } from "../types/Category";
+import data from "../data.json";
 
-type Props = {
-  categories: Category[];
-};
+const categories: Category[] = data.categories;
 
-const Sidebar = ({ categories }: Props) => {
+const Sidebar = () => {
   return (
     <section
       id="Sidebar"

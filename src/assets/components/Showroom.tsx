@@ -32,7 +32,7 @@ const Showroom = ({ filters, productList, cartItems, setCartItems }: Props) => {
           ))}
         </ul>
       </div>
-      {productList.map((product) => (
+      {(productList as Product[]).map((product) => (
         <Card
           product={product}
           key={product.id}

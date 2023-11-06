@@ -1,11 +1,10 @@
 import Head from "next/head";
-import Link from "next/link";
 import Navbar from "~/assets/components/Navbar";
 import data from "~/assets/data.json";
-import Store from "./Store";
+import Store from "../assets/components/Store";
 import { Work_Sans } from "next/font/google";
 import type { Product } from "~/assets/types/Product";
-import Cart from "./Cart";
+import Cart from "../assets/components/Cart";
 import { useState } from "react";
 
 const font = Work_Sans({ weight: "400", subsets: ["latin"] });
@@ -15,7 +14,6 @@ const font = Work_Sans({ weight: "400", subsets: ["latin"] });
 // Global Props Declaration
 
 const filters = data.store.searchOptions;
-const categories = data.categories;
 const productList: (Product | Partial<Product>)[] = data.products;
 
 // Component
@@ -62,7 +60,6 @@ export default function Home() {
           />
         ) : (
           <Store
-            categories={categories}
             filters={filters}
             productList={productList}
             cartItems={cartItems}
