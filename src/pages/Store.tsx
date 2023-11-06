@@ -11,9 +11,17 @@ type Props = {
   filters: filter[];
   categories: Category[];
   productList: (Product | Partial<Product>)[];
+  setCartItems: (newCartItems: Product[] | Partial<Product>[]) => void;
+  cartItems: Product[] | Partial<Product>[];
 };
 
-const Store = ({ filters, categories, productList, setCartItems }: Props) => {
+const Store = ({
+  filters,
+  categories,
+  productList,
+  cartItems,
+  setCartItems,
+}: Props) => {
   return (
     <section
       id="store"
@@ -25,6 +33,7 @@ const Store = ({ filters, categories, productList, setCartItems }: Props) => {
           filters={filters}
           productList={productList}
           setCartItems={setCartItems}
+          cartItems={cartItems}
         />
         <NewsPanel />
       </div>

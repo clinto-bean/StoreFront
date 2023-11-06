@@ -3,8 +3,15 @@ import Icon from "@mdi/react";
 import { mdilCart } from "@mdi/light-js";
 import type { Product } from "~/assets/types/Product";
 
-const Card = ({ product }: { product: Product }) => {
-  const [itemCount, setItemCount] = useState(0);
+type Props = {
+  product: Product | Partial<Product>;
+  setCartItems: (newCartItems: (Product | Partial<Product>)[]) => void;
+  cartItems: (Product | Partial<Product>)[];
+};
+
+const Card = (props: Props) => {
+  const { product, cartItems, setCartItems } = props;
+  const [itemCount, setItemCount] = useState(6);
   return (
     <div
       className="!max-h-md !min-h-md box-border flex h-fit w-fit !max-w-xs grow-0 flex-col overflow-hidden rounded-md border border-sky-200 bg-sky-50 shadow-md"
@@ -52,13 +59,15 @@ const Card = ({ product }: { product: Product }) => {
         </button>
         <button
           onClick={() => {
+            const newItem = { ...product, quantity: itemCount };
+            setCartItems([...cartItems, newItem]);
             setItemCount(0);
           }}
           className="flex w-full items-center justify-center gap-8 rounded-md border border-emerald-600 bg-emerald-500 py-4 text-emerald-50 shadow-sm transition-all hover:bg-opacity-50 hover:text-emerald-950 active:scale-105 active:text-emerald-950"
         >
           <Icon path={mdilCart} size={1.25} className="text-emerald-100" />
           <p>Add to Cart</p>
-          <p>{`$${product.price * itemCount}`}</p>
+          <p>{`$${product.price ?? 0 * itemCount}`}</p>
         </button>
       </div>
     </div>

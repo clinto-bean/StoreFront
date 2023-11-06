@@ -21,15 +21,19 @@ const productList: (Product | Partial<Product>)[] = data.products;
 // Component
 
 export default function Home() {
-  let count = 0;
-  const [cartItems, setCartItems] = useState([
-    { name: "Bananas", price: 0.49, unit: "lb", weight: 2 },
-    { name: "Organic Chicken Breast", price: 3.19, unit: "lb", weight: 3 },
+  type CartItem = Product | Partial<Product>;
+
+  const [cartItems, setCartItems] = useState<CartItem[]>([
+    { id: 1, weight: 0 },
+    { id: 2, weight: 5 },
+    { id: 3, weight: 5 },
+    { id: 4, weight: 5 },
   ]);
+
+  const count = cartItems.filter((item) => item.weight).length;
 
   const [inCheckOut, setInCheckout] = useState(false);
 
-  cartItems.map((i) => count++);
   return (
     <main className={font.className}>
       <Head>
@@ -47,12 +51,17 @@ export default function Home() {
           cartCount={count}
         />
         {inCheckOut ? (
-          <Cart cartItems={cartItems} setCartItems={setCartItems} />
+          <Cart
+            productList={productList}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
         ) : (
           <Store
             categories={categories}
             filters={filters}
             productList={productList}
+            cartItems={cartItems}
             setCartItems={setCartItems}
           />
         )}

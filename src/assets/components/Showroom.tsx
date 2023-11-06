@@ -7,9 +7,11 @@ type filter = { id: number; name: string };
 type Props = {
   filters: filter[];
   productList: (Product | Partial<Product>)[];
+  cartItems: Product[] | Partial<Product>[];
+  setCartItems: (newCartItems: Product[] | Partial<Product>[]) => void;
 };
 
-const Showroom = ({ filters, productList }: Props) => {
+const Showroom = ({ filters, productList, cartItems, setCartItems }: Props) => {
   return (
     <section
       id="showboard"
@@ -31,7 +33,12 @@ const Showroom = ({ filters, productList }: Props) => {
         </ul>
       </div>
       {productList.map((product) => (
-        <Card product={product} key={product.id} />
+        <Card
+          product={product}
+          key={product.id}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+        />
       ))}
     </section>
   );

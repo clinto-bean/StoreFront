@@ -2,14 +2,15 @@ import React from "react";
 import type { Product } from "~/assets/types/Product";
 
 type Props = {
-  cartItems: Product[] | PartialProduct[];
-  setCartItems: (newCartItems: Product[] | PartialProduct[]) => void;
+  productList: Product[];
+  cartItems: Product[] | Partial<Product>[];
+  setCartItems: (newCartItems: Product[] | Partial<Product>[]) => void;
 };
 
 const Cart = (props: Props) => {
-  const { cartItems, setCartItems } = props;
+  const { cartItems, setCartItems, productList } = props;
 
-  const removeItem = (item: Product) => {
+  const removeItem = (item: Product | Partial<Product>) => {
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
   };
 
@@ -18,28 +19,35 @@ const Cart = (props: Props) => {
       <div id="checkout" className="col-span-2 flex flex-col p-4">
         <p className="text-xl">Checkout</p>
         <div>
-          {cartItems.map((item: Product) => (
-            <div
-              className="flex w-fit items-center justify-between gap-4 p-4"
-              key={item.name}
-            >
-              <div className="flex flex-col gap-2">
-                <p className="p text-xl font-bold">{`${item.name}`}</p>
-                <p>
-                  {item.weight}
-                  {item.unit} at {item.price} per {item.unit}: $
-                  {(item.weight * item.price).toFixed(2)}
-                </p>
-              </div>
+          {cartItems.map((item) => {
+            const product = productList.find((p) => p.id === item.id);
 
-              <button
-                className="flex rounded-md bg-red-200 p-4 text-center text-red-600"
-                onClick={() => removeItem(item)}
-              >
-                Remove
-              </button>
-            </div>
-          ))}
+            if (product && item.weight) {
+              return (
+                <div
+                  className="flex w-fit items-center justify-between gap-4 p-4"
+                  key={product.name}
+                >
+                  <div className="flex flex-col gap-2">
+                    <p className="p text-xl font-bold">{product.name}</p>
+                    <p>
+                      {item.weight} {product.unit} at ${product.price} per{" "}
+                      {product.unit}: $
+                      {(item.weight * (product.price ?? 0)).toFixed(2)}
+                    </p>
+                  </div>
+                  <button
+                    className="flex rounded-md bg-red-200 p-4 text-center text-red-600"
+                    onClick={() => removeItem(item)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              );
+            }
+
+            return null;
+          })}
         </div>
       </div>
       <div id="info" className=" flex h-fit flex-col ">

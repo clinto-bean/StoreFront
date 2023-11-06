@@ -36,7 +36,11 @@ function Navbar({ links, setInCheckout, cartCount }: Props) {
         id="logoWrapper"
         className="border-gray-5 flex h-16 w-24 items-center justify-center text-sky-50 transition-all hover:scale-125 hover:bg-transparent active:scale-105"
       >
-        <Image src={logo} alt="StoreFront" />
+        <Image
+          src={logo}
+          alt="StoreFront"
+          onClick={() => setInCheckout(false)}
+        />
       </button>
       <div
         id="searchWrapper"

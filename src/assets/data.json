@@ -90,7 +90,8 @@
       "organic": false,
       "food": false,
       "price": 11.79,
-      "buyLimit": 1
+      "buyLimit": 1,
+      "unit": "each"
     }
   ],
   "application": {
