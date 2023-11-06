@@ -1,18 +1,26 @@
 {
   "navigation": {
     "links": [
-      { "id": 0, "name": "Home", "href": "/", "icon": "mdilHome" },
+      {
+        "id": 0,
+        "name": "Home",
+        "href": "/",
+        "icon": "mdilHome",
+        "onClick": false
+      },
       {
         "id": 1,
         "name": "Account",
         "href": "/account",
-        "icon": "mdilAccount"
+        "icon": "mdilAccount",
+        "onClick": false
       },
       {
         "id": 2,
         "name": "Checkout",
         "href": "/checkout",
-        "icon": "mdilCart"
+        "icon": "mdilCart",
+        "onClick": true
       }
     ]
   },
@@ -33,13 +41,12 @@
     },
     {
       "id": 1,
-      "name": "Bulk",
-      "subcategories": ["Grains & Cereal", "Candy", "Nuts & Snacks", "Baking"]
+      "name": "Meat"
     },
     {
       "id": 2,
       "name": "Household & Kitchen",
-      "subcategories": ["Knives", "Silverware", "Kitchen Appliances"]
+      "subcategories": ["Medication"]
     }
   ],
   "user": {
@@ -56,7 +63,8 @@
       "organic": false,
       "food": true,
       "price": 0.49,
-      "unit": "lb"
+      "unit": "lb",
+      "buyLimit": 0
     },
     {
       "id": 2,
@@ -64,7 +72,43 @@
       "organic": true,
       "food": true,
       "price": 0.79,
-      "unit": "lb"
+      "unit": "lb",
+      "buyLimit": 0
+    },
+    {
+      "id": 3,
+      "name": "Chicken Breast",
+      "organic": true,
+      "food": true,
+      "price": 3.19,
+      "unit": "lb",
+      "buyLimit": 5
+    },
+    {
+      "id": 4,
+      "name": "Flonase Allergy Spray",
+      "organic": false,
+      "food": false,
+      "price": 11.79,
+      "buyLimit": 1
     }
-  ]
+  ],
+  "application": {
+    "types": [
+      {
+        "type": "Product",
+        "keys": [
+          {
+            "name": "string",
+            "id": "number",
+            "organic": "boolean",
+            "food": "boolean",
+            "price": "number",
+            "unit": "string",
+            "buyLimit": "number"
+          }
+        ]
+      }
+    ]
+  }
 }

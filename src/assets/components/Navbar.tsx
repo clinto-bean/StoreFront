@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import logo from "../images/logo.png";
 import Image from "next/image";
 import Icon from "@mdi/react";
@@ -18,13 +17,19 @@ type Link = {
   name: string;
   href: string;
   icon: string;
+  onClick: boolean;
 };
 
-type Props = { links: Link[] };
+type Props = {
+  links: Link[];
+  setInCheckout: (value: boolean) => void;
+  cartCount: number;
+};
 
-function Navbar({ links }: Props) {
+function Navbar({ links, setInCheckout, cartCount }: Props) {
+  const itemCount = cartCount;
   return (
-    <nav className="sticky top-0 flex h-fit w-screen justify-between gap-4 bg-slate-950 bg-opacity-90 p-4 text-sky-50 shadow-md">
+    <nav className="sticky top-0 z-50 flex h-fit w-full justify-between gap-4 bg-slate-950 bg-opacity-[75%] p-4 text-sky-50 shadow-md backdrop-brightness-50 transition-all hover:bg-opacity-100 focus:bg-opacity-80">
       <button
         type="button"
         name="StoreFront Logo"
@@ -47,13 +52,22 @@ function Navbar({ links }: Props) {
         className="flex max-w-md justify-between gap-4 p-4 text-sky-950"
       >
         {links.map((link) => (
-          <Link className="hover:scale-125" href={link.href} key={link.id}>
+          <button
+            className="relative transition-all hover:scale-125"
+            key={link.id}
+            onClick={() => setInCheckout(link.onClick)}
+          >
             <Icon
               path={iconMap[link.icon] ?? ""}
               size={1.25}
               className="h-12 w-12 fill-sky-50 text-sky-50 hover:text-sky-300"
             />
-          </Link>
+            {link.icon === "mdilCart" && itemCount > 0 && (
+              <div className="absolute right-0 top-0 -mr-1 -mt-1 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-emerald-500 font-sans text-sm text-white">
+                {itemCount < 10 ? itemCount : "..."}
+              </div>
+            )}
+          </button>
         ))}
       </ul>
     </nav>
