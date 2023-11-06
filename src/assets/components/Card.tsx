@@ -11,7 +11,7 @@ type Props = {
 
 const Card = (props: Props) => {
   const { product, cartItems, setCartItems } = props;
-  const [itemCount, setItemCount] = useState(6);
+  const [itemCount, setItemCount] = useState(0);
   return (
     <div
       className="!max-h-md !min-h-md box-border flex h-fit w-fit !max-w-xs grow-0 flex-col overflow-hidden rounded-md border border-sky-200 bg-sky-50 shadow-md"
