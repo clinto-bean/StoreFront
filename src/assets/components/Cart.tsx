@@ -17,12 +17,14 @@ const Cart = (props: Props) => {
   return (
     <main id="cart" className="grid h-full w-full grid-cols-3 bg-sky-50">
       <div id="checkout" className="col-span-2 flex flex-col p-4">
-        <p className="text-xl">Checkout</p>
+        <p className="text-xl" onClick={() => console.log(cartItems)}>
+          Checkout
+        </p>
         <div>
           {(cartItems as Product[]).map((item) => {
             const product = productList.find((p) => p.id === item.id);
 
-            if (product && item.weight) {
+            if (product) {
               return (
                 <div
                   className="flex w-fit items-center justify-between gap-4 p-4"
@@ -33,7 +35,9 @@ const Cart = (props: Props) => {
                     <p>
                       {item.weight} {product.unit} at ${product.price} per{" "}
                       {product.unit}: $
-                      {(item.weight * (product.price ?? 0)).toFixed(2)}
+                      {item.weight
+                        ? (item.weight * (product.price ?? 0)).toFixed(2)
+                        : 0}
                     </p>
                   </div>
                   <button

@@ -19,14 +19,9 @@ const productList: (Product | Partial<Product>)[] = data.products;
 // Component
 
 export default function Home() {
-  type CartItem = Product | Partial<Product>;
-
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    { id: 1, weight: 0 },
-    { id: 2, weight: 5 },
-    { id: 3, weight: 5 },
-    { id: 4, weight: 5 },
-  ]);
+  const [cartItems, setCartItems] = useState<Product[] | Partial<Product>[]>(
+    [],
+  );
 
   const count = cartItems.filter((item) => item.weight).length;
 

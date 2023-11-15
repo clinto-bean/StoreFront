@@ -59,7 +59,7 @@
   "products": [
     {
       "id": 1,
-      "name": "Bananas",
+      "name": "White Onion",
       "organic": false,
       "food": true,
       "price": 0.49,
